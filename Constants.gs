@@ -6,3 +6,9 @@ const folderId = props.getProperty("FOLDER_ID");
 const model = "gemini-3-flash-preview";
 const sheetName = "data";
 const email = props.getProperty("EMAIL");
+
+const promptText = `Extract the following data: in the file, look where it says "ASPECT TO BE CONTROLLED". 
+    Below are texts that always begin with a capital letter followed by a ".", for example "A.". 
+    So I want the key to be just the uppercase letter, and the value is "C", "NC" or "NA", depending
+    if the checkbox is below "COMPLIANT", "NON-COMPLIANT" or "NOT APPLICABLE". 
+    Respond with an array of JSON objects. Do not use Markdown.`;
