@@ -1,7 +1,7 @@
 function buildGeminiPayload(base64Data, promptText) {
   if (!base64Data || !promptText) throw new Error("Error in buildGeminiPayload function: missing argument(s)");
-  
-  return {
+
+  const payload = {
     contents: [
       {
         parts: [
@@ -16,6 +16,8 @@ function buildGeminiPayload(base64Data, promptText) {
       },
     ],
   };
+  
+  return payload
 }
 
 function callGeminiAPI(payload, apiKey, model) {
