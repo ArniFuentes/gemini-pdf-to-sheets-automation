@@ -27,6 +27,7 @@ function main() {
       subject: "Error in the script",
       body: error.stack,
     });
-    throw error.stack;
+    
+    throw error;
   }
 }
