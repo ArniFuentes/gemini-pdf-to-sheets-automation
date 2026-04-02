@@ -34,9 +34,15 @@ function callGeminiAPI(payload, apiKey, model) {
   };
 
   const response = UrlFetchApp.fetch(url, options);
+  const json = response.getContentText();
   const statusCode = response.getResponseCode();
-  if (statusCode !== 200) throw new Error(`Error in the callGeminiAPI function - status code: ${statusCode}`);
-  return JSON.parse(response.getContentText());
+
+  if (statusCode !== 200) {
+    const errorMessage = JSON.parse(json).error.message;
+    throw new Error(`Error in the callGeminiAPI function: ${errorMessage}`);
+  }
+  
+  return JSON.parse(json);
 }
 
 function extractGeminiData(apiResponse) {
