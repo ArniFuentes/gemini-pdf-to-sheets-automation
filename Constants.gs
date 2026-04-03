@@ -6,6 +6,7 @@ const folderId = props.getProperty("FOLDER_ID");
 // const model = "gemini-3-flash-preview";
 const model = "gemini-2.5-flash";
 // const model = "gemini-2.5-flash-lite";
+const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`;
 const sheetName = "data";
 const email = props.getProperty("EMAIL");
 

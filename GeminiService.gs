@@ -20,10 +20,8 @@ function buildGeminiPayload(base64Data, promptText) {
   return payload
 }
 
-function callGeminiAPI(payload, apiKey, model) {
-  if (!payload || !apiKey || !model) throw new Error("Error in callGeminiAPI function: missing argument(s)");
-
-  const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`;
+function callGeminiAPI(payload, apiKey, url) {
+  if (!payload || !apiKey || !url) throw new Error("Error in callGeminiAPI function: missing argument(s)");
 
   const options = {
     method: "POST",
@@ -39,7 +37,7 @@ function callGeminiAPI(payload, apiKey, model) {
 
   if (statusCode !== 200) {
     const errorMessage = JSON.parse(json).error.message;
-    throw new Error(`Error in the callGeminiAPI function: ${errorMessage}`);
+    throw new Error(`${errorMessage}`);
   }
   
   return JSON.parse(json);
