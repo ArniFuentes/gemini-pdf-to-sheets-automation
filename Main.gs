@@ -26,11 +26,11 @@ function main() {
 
     console.log("Process completed");
   } catch (error) {
-    // MailApp.sendEmail({
-    //   to: email,
-    //   subject: "Error in the script",
-    //   body: error.stack,
-    // });
+    MailApp.sendEmail({
+      to: email,
+      subject: "Error in the script",
+      body: error.stack,
+    });
 
     throw error;
   }
